@@ -5,7 +5,7 @@ namespace Vehicles;
 /**
 * Class Vehicle
 */
-class VehicleBase 
+abstract class VehicleBase 
 {
 	//public $owner;
 	//private $owner = 'Walter'; //Eliminamos esta linea, porque no queremos que sea estática la asignación de esta variable, todos los vehículos que creemos no van hacer propiedad de walter, entonces debemos crear un método set
@@ -19,6 +19,7 @@ class VehicleBase
 	}
 
 	public function move(){
+		echo $this->startEngine() . '<br>';
 		echo 'moving<br>';
 	}
 
@@ -30,6 +31,7 @@ class VehicleBase
 		$this->owner = $owner;
 	}
 
+	public abstract function startEngine();
 }
 
 ?>
