@@ -9,6 +9,17 @@ class Car
 	//private $owner = 'Walter'; //Eliminamos esta linea, porque no queremos que sea estática la asignación de esta variable, todos los vehículos que creemos no van hacer propiedad de walter, entonces debemos crear un método set
 	private $owner;
 
+	public function __construct($ownerName)
+	{
+		$this->owner = $ownerName;
+		echo 'construct<br>';
+	}
+
+	public function __destruct()
+	{
+		echo 'destruct<br>';
+	}
+
 	public function move(){
 		echo 'moving<br>';
 	}
@@ -25,12 +36,12 @@ class Car
 
 echo 'Class Car<br>';
 
-$car = new Car();
-$car2 = new Car();
+$car = new Car('Walter');
+$car2 = new Car('Max');
 
 $car->move();
-$car->setOwner('Walter');
-$car2->setOwner('Max');
+/*$car->setOwner('Walter');
+$car2->setOwner('Max');*/
 
 //Podemos acceder de esta forma cuando la variable es publica
 //$car->owner = 'Alex';
