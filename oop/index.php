@@ -1,59 +1,11 @@
 <?php 
 
-/**
-* Class Vehicle
-*/
-class Vehicle 
-{
-	//public $owner;
-	//private $owner = 'Walter'; //Eliminamos esta linea, porque no queremos que sea estática la asignación de esta variable, todos los vehículos que creemos no van hacer propiedad de walter, entonces debemos crear un método set
-	//private $owner;
-	protected $owner; // protected: será privado, pero accesible a partir de subclases o clases hijas.
+include 'vehicles/Car.php';
+include 'vehicles/Truck.php';
 
-	public function __construct($ownerName)
-	{
-		$this->owner = $ownerName;
-		echo 'construct<br>';
-	}
-
-	public function move(){
-		echo 'moving<br>';
-	}
-
-	public function getOwner() {
-		return $this->owner;
-	}
-
-	public function setOwner($owner) {
-		$this->owner = $owner;
-	}
-
-}
-
-/**
-* Class Vehicle
-*/
-class Car extends Vehicle {
-	public function move(){
-		echo 'Car: moving<br>';
-	}
-}
-
-class Truck extends Vehicle {
-
-	private $type;
-
-	public function __construct($ownerName, $type)
-	{
-		$this->type = $type;
-		//parent::__construct($ownerName);
-		$this->owner = $ownerName;
-	}
-
-	public function move(){
-		echo 'Truck ' . $this->type . ': moving<br>';
-	}
-}
+/*use Vehicles\Car;
+use Vehicles\Truck;*/
+use Vehicles\{Car, Truck};
 
 echo 'Class Car<br>';
 
