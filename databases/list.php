@@ -1,3 +1,11 @@
+<?php
+
+require_once 'config.php';
+
+$queryResult = $pdo->query("SELECT * FROM users");
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,15 +15,22 @@
 </head>
 <body>
 	<div class="container">
-		<h1>Databases</h1>
-		<ul>
-			<li>
-				<a href="list.php">List Users</a>
-			</li>
-			<li>
-				<a href="add.php">Add Users</a>
-			</li>
-		</ul>
+		<h1>List Users</h1>
+		<a href="index.php">Home</a>
+		<table class="table">
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+			</tr>
+			<?php 
+				while ($row = $queryResult->fetch(PDO::FETCH_ASSOC)) {
+					echo "<tr>";
+					echo "<td>" . $row['name'] . "</td>";
+					echo "<td>" . $row['email'] . "</td>";
+					echo "</tr>";
+				}
+			?>
+		</table>
 	</div>
 </body>
 </html>
