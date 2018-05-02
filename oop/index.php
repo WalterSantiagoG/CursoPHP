@@ -23,6 +23,8 @@ echo 'Class Car<br>';
 $car = new Car('Walter');
 $car->move();
 //echo 'Owner car: ' . $car->getOwner() . '<br>';
+echo 'GPS Pos: ' . $car->getPos();
+
 
 echo '<br>Class truck 1<br>';
 $truck1 = new Truck('Max', 'Pickup');
