@@ -11,21 +11,21 @@ require_once '../vendor/autoload.php';
 //Solo aparece en nuestro Front Controller y no en cada una de las paginas
 include_once '../config.php';
 
+$baseDir = str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
+$baseUrl = 'http://'. $_SERVER['HTTP_HOST'] . $baseDir;
+//var_dump($baseUrl); //String(38) "http://localhost/CursoPHP/blog/public/"
+define('BASE_URL', $baseUrl);
+
 $route = $_GET['route'] ?? '/';
 
-/*switch ($route) {
-	case '/':
-		require '../index.php';
-		break;
+//la función ob_star(); lo que hace es enviar las vistas al buffer y la función ob_get_clean(); lo que hace es que muestra los datos del buffer y los limpia.
+function render($fileName, $params = []) {
+	ob_start();
+	extract($params);
+	include $fileName;
 
-	case '/admin':
-		require '../admin/index.php';
-		break;	
-
-	case '/admin/posts':
-		require '../admin/posts.php';
-		break;
-}*/
+	return ob_get_clean();
+}
 
 use Phroute\Phroute\RouteCollector;
 
@@ -35,7 +35,7 @@ $router->get('/',function() use ($pdo){
 	$query->execute();
 
 	$blogPosts = $query->fetchAll(PDO::FETCH_ASSOC);
-	include '../views/index.php';
+	return render('../views/index.php', ['blogPosts' => $blogPosts]);
 });
 
 //Despues de la ruta dispatcher: es el objeto que va tomar la ruta que nos esta llegando y va a mandar a llamar el metodo que realmente necesita 
