@@ -14,10 +14,11 @@
 		</div>
 		<div class="row">
 			<div class="col-md-8" >
+				<h2>Admin Panel</h2>
 
 				<ul>
 					<li>
-						<a href="posts.php">Manage Posts</a>
+						<a href="<?php echo BASE_URL; ?>admin/posts">Manage Posts</a>
 					</li>
 				</ul>
 				
@@ -31,7 +32,7 @@
 			<div class="col-md-12"> 
 				<footer>
 					This is a footer<br>
-					<a href="admin/index.php">Admin panel</a>
+					<a href="<?php echo BASE_URL; ?>admin">Admin panel</a>
 				</footer>	
 			</div>
 			

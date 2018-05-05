@@ -1,11 +1,3 @@
-<?php 
-
-$query = $pdo->prepare('SELECT * FROM blog_posts ORDER BY id DESC');
-$query->execute();
-
-$blogPosts = $query->fetchAll(PDO::FETCH_ASSOC);
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,23 +15,27 @@ $blogPosts = $query->fetchAll(PDO::FETCH_ASSOC);
 		<div class="row">
 			
 			<div class="col-md-8" >
-				<h2>Post</h2>
-				<a class="btn btn-primary" href="insert-post.php">New Post</a>
+				<h2>New Post</h2>
+				<p>
+					<a class="btn btn-default" href="<?php echo BASE_URL; ?>admin/posts">Back</a>
+				</p>
+				<?php 
+					if (isset($result) && $result) {
+						echo '<div class="alert alert-success">Post Saved!</div>';
+					}
+				?>
+				<form method="POST">
+					<div class="form-group">
+						<label for="inputTitle">Title</label>
+						<input class="form-control" type="text" name="title" id="inpuTitle">
+					</div>
+						
+					<textarea class="form-control" name="content" id="inputContent" rows="5"></textarea>
+					<br>
+					<input class="btn btn-primary" type="submit" value="Save">
 
-				<table class="table">
-					<tr>
-						<th>Title</th>
-						<th>Edit</th>
-						<th>Delete</th>
-					</tr>
-					<?php foreach ($blogPosts as $blogPost){ ?>
-					<tr>
-						<td><?php echo $blogPost['title'] ?></td>
-						<td>Edit</td>
-						<td>Delete</td>
-					</tr>
-					<?php } ?>
-				</table>
+					
+				</form>
 				
 			</div>
 			<div class="col-md-4">
