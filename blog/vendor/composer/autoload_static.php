@@ -6,7 +6,19 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit8c199a4812989a6b121206f096449e18
 {
+    public static $files = array (
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
+        'T' => 
+        array (
+            'Twig\\' => 5,
+        ),
+        'S' => 
+        array (
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
+        ),
         'P' => 
         array (
             'Phroute\\Phroute\\' => 16,
@@ -18,6 +30,14 @@ class ComposerStaticInit8c199a4812989a6b121206f096449e18
     );
 
     public static $prefixDirsPsr4 = array (
+        'Twig\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/twig/twig/src',
+        ),
+        'Symfony\\Polyfill\\Mbstring\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
         'Phroute\\Phroute\\' => 
         array (
             0 => __DIR__ . '/..' . '/phroute/phroute/src/Phroute',
@@ -28,21 +48,14 @@ class ComposerStaticInit8c199a4812989a6b121206f096449e18
         ),
     );
 
-    public static $classMap = array (
-        'App\\Controllers\\IndexController' => __DIR__ . '/../..' . '/app/controllers/indexController.php',
-        'Phroute\\Phroute\\Dispatcher' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/Dispatcher.php',
-        'Phroute\\Phroute\\Exception\\BadRouteException' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/Exception/BadRouteException.php',
-        'Phroute\\Phroute\\Exception\\HttpException' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/Exception/HttpException.php',
-        'Phroute\\Phroute\\Exception\\HttpMethodNotAllowedException' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/Exception/HttpMethodNotAllowedException.php',
-        'Phroute\\Phroute\\Exception\\HttpRouteNotFoundException' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/Exception/HttpRouteNotFoundException.php',
-        'Phroute\\Phroute\\HandlerResolver' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/HandlerResolver.php',
-        'Phroute\\Phroute\\HandlerResolverInterface' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/HandlerResolverInterface.php',
-        'Phroute\\Phroute\\Route' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/Route.php',
-        'Phroute\\Phroute\\RouteCollector' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/RouteCollector.php',
-        'Phroute\\Phroute\\RouteDataArray' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/RouteDataArray.php',
-        'Phroute\\Phroute\\RouteDataInterface' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/RouteDataInterface.php',
-        'Phroute\\Phroute\\RouteDataProviderInterface' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/RouteDataProviderInterface.php',
-        'Phroute\\Phroute\\RouteParser' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/RouteParser.php',
+    public static $prefixesPsr0 = array (
+        'T' => 
+        array (
+            'Twig_' => 
+            array (
+                0 => __DIR__ . '/..' . '/twig/twig/lib',
+            ),
+        ),
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -50,7 +63,7 @@ class ComposerStaticInit8c199a4812989a6b121206f096449e18
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit8c199a4812989a6b121206f096449e18::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit8c199a4812989a6b121206f096449e18::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit8c199a4812989a6b121206f096449e18::$classMap;
+            $loader->prefixesPsr0 = ComposerStaticInit8c199a4812989a6b121206f096449e18::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }
