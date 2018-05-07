@@ -8,24 +8,33 @@ error_reporting(E_ALL);
 
 require_once '../vendor/autoload.php';
 
-//Solo aparece en nuestro Front Controller y no en cada una de las paginas
-include_once '../config.php';
-
 $baseDir = str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
 $baseUrl = 'http://'. $_SERVER['HTTP_HOST'] . $baseDir;
 //var_dump($baseUrl); //String(38) "http://localhost/CursoPHP/blog/public/"
 define('BASE_URL', $baseUrl);
 
+use Illuminate\Database\Capsule\Manager as Capsule;
+
+$capsule = new Capsule;
+
+$capsule->addConnection([
+    'driver'    => 'mysql',
+    'host'      => 'localhost',
+    'database'  => 'cursophp',
+    'username'  => 'root',
+    'password'  => '',
+    'charset'   => 'utf8',
+    'collation' => 'utf8_unicode_ci',
+    'prefix'    => '',
+]);
+
+// Make this Capsule instance available globally via static methods... (optional)
+$capsule->setAsGlobal();
+
+// Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
+$capsule->bootEloquent();
+
 $route = $_GET['route'] ?? '/';
-
-//la función ob_star(); lo que hace es enviar las vistas al buffer y la función ob_get_clean(); lo que hace es que muestra los datos del buffer y los limpia.
-function render($fileName, $params = []) {
-	ob_start();
-	extract($params);
-	include $fileName;
-
-	return ob_get_clean();
-}
 
 use Phroute\Phroute\RouteCollector;
 
