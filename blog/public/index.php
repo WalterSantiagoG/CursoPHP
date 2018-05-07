@@ -13,16 +13,20 @@ $baseUrl = 'http://'. $_SERVER['HTTP_HOST'] . $baseDir;
 //var_dump($baseUrl); //String(38) "http://localhost/CursoPHP/blog/public/"
 define('BASE_URL', $baseUrl);
 
+//Añadimos nuestro archivo .env como variables de entorno
+$dotenv = new \Dotenv\Dotenv(__DIR__ . '/..');
+$dotenv->load();
+
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 $capsule = new Capsule;
 
 $capsule->addConnection([
     'driver'    => 'mysql',
-    'host'      => 'localhost',
-    'database'  => 'cursophp',
-    'username'  => 'root',
-    'password'  => '',
+    'host'      => getenv('DB_HOST'),
+    'database'  => getenv('DB_NAME'),
+    'username'  => getenv('DB_USER'),
+    'password'  => getenv('DB_PASS'),
     'charset'   => 'utf8',
     'collation' => 'utf8_unicode_ci',
     'prefix'    => '',
