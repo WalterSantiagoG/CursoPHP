@@ -12,7 +12,7 @@
 {% if result %}
 	<div class="alert alert-success">Post Saved!</div>
 {% endif %}
-<form method="POST">
+<form method="POST" onsubmit="return validateForm()">
 	<div class="form-group">
 		<label for="inputTitle">Title</label>
 		<input class="form-control" type="text" name="title" id="inpuTitle">
@@ -27,4 +27,16 @@
 	
 </form>
 
+{% endblock %}
+
+{% block js %}
+	<script>
+		function validateForm(){
+			var title = document.getElementById('inpuTitle').value.trim();
+			if(title === ''){
+				swal("Oops...!", "Title is required...", "error");
+			}
+			return false;
+		}
+	</script>
 {% endblock %}
