@@ -54,6 +54,8 @@ $router->filter('auth', function(){
     }
 });
 
+$router -> controller('/detail', App\Controllers\DetailController::class);
+
 $router->controller('/auth', App\Controllers\AuthController::class);
 
 $router->group(['before' => 'auth'], function($router){
